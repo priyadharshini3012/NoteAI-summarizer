@@ -1,0 +1,21 @@
+services:
+  # 🔹 BACKEND: Flask + AI Model
+  - type: web
+    name: ai-summarizer-api
+    runtime: python
+    plan: free # Note: Free tier may spin down when idle
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.0
+
+  # 🔹 FRONTEND: React UI
+  - type: web
+    name: ai-summarizer-ui
+    runtime: static
+    buildCommand: cd ai-summarizer-frontend && npm install && npm run build
+    staticPublishPath: ai-summarizer-frontend/build
+    envVars:
+      - key: REACT_APP_API_URL
+        value: https://ai-summarizer-api.onrender.com # Placeholder: Update with your actual Render URL

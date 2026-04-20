@@ -1,0 +1,38 @@
+/* ══════════════════════════════════════════
+   APP ROOT
+══════════════════════════════════════════ */
+.app {
+  min-height: 100vh;
+  position: relative;
+}
+
+.app__main {
+  position: relative;
+  min-height: 100vh;
+}
+
+/* ══════════════════════════════════════════
+   PAGE TRANSITIONS
+══════════════════════════════════════════ */
+.page-transition {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  will-change: opacity, transform;
+}
+
+.page-transition--visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+  position: relative;
+  z-index: 1;
+}
+
+.page-transition--hidden {
+  opacity: 0;
+  transform: translateY(8px);
+  pointer-events: none;
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  visibility: hidden;
+  z-index: 0;
+}
